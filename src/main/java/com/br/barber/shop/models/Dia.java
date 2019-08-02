@@ -28,7 +28,7 @@ public class Dia implements Serializable{
 	
 	
 	@OneToMany(mappedBy = "dia")
-	private List<HorariosCabelo> cabelos;
+	private List<HorarioCabelo> cabelos;
 	
 	
 	@OneToMany(mappedBy = "dia")
@@ -41,6 +41,82 @@ public class Dia implements Serializable{
 	
 	@OneToMany(mappedBy = "dia")
 	private List<HorarioSobrancelha> sobrancelha;
+
+
+	public Dia() {
+		
+	}
+
+
+	public Integer getId() {
+		return id;
+	}
+
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+
+	public int getNumero() {
+		return numero;
+	}
+
+
+	public void setNumero(int numero) {
+		this.numero = numero;
+	}
+
+
+	public Mes getMes() {
+		return mes;
+	}
+
+
+	public void setMes(Mes mes) {
+		this.mes = mes;
+	}
+
+
+	public List<HorarioCabelo> getCabelos() {
+		return cabelos;
+	}
+
+
+	public void setCabelos(List<HorarioCabelo> cabelos) {
+		this.cabelos = cabelos;
+	}
+
+
+	public List<HorarioBarba> getBarba() {
+		return barba;
+	}
+
+
+	public void setBarba(List<HorarioBarba> barba) {
+		this.barba = barba;
+	}
+
+
+	public List<HorarioPezinho> getPezinho() {
+		return pezinho;
+	}
+
+
+	public void setPezinho(List<HorarioPezinho> pezinho) {
+		this.pezinho = pezinho;
+	}
+
+
+	public List<HorarioSobrancelha> getSobrancelha() {
+		return sobrancelha;
+	}
+
+
+	public void setSobrancelha(List<HorarioSobrancelha> sobrancelha) {
+		this.sobrancelha = sobrancelha;
+	}
+	
 	
 	
 

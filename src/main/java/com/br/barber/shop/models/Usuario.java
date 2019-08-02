@@ -27,6 +27,19 @@ public class Usuario implements Serializable{
 	@OneToOne(mappedBy = "usuario")
 	private Login login;
 	
+	@OneToOne(mappedBy = "usuario")
+	private HorarioBarba barba;
+	 
+	@OneToOne(mappedBy = "usuario")
+	private HorarioPezinho pezinho;
+	
+	@OneToOne(mappedBy = "usuario")
+	private HorarioCabelo cabelo;
+	
+	@OneToOne(mappedBy = "usuario")
+	private HorarioSobrancelha sobrancelha;
+	
+	
 	public Usuario() {
 		
 	}
@@ -70,5 +83,39 @@ public class Usuario implements Serializable{
 	public void setLogin(Login login) {
 		this.login = login;
 	}
+
+	public HorarioBarba getBarba() {
+		return barba;
+	}
+
+	public void setBarba(HorarioBarba barba) {
+		this.barba = barba;
+	}
+
+	public HorarioPezinho getPezinho() {
+		return pezinho;
+	}
+
+	public void setPezinho(HorarioPezinho pezinho) {
+		this.pezinho = pezinho;
+	}
+
+	public HorarioCabelo getCabelo() {
+		return cabelo;
+	}
+
+	public void setCabelo(HorarioCabelo cabelo) {
+		this.cabelo = cabelo;
+	}
+
+	public HorarioSobrancelha getSobrancelha() {
+		return sobrancelha;
+	}
+
+	public void setSobrancelha(HorarioSobrancelha sobrancelha) {
+		this.sobrancelha = sobrancelha;
+	}
+	
+	
 
 }

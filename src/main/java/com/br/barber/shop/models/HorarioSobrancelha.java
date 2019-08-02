@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotBlank;
 
 @Entity
@@ -23,6 +24,9 @@ public class HorarioSobrancelha implements Serializable{
 	
 	@ManyToOne(cascade = {CascadeType.ALL})
 	private Dia dia;
+	
+	@OneToOne
+	private Usuario usuario;
 
 	public HorarioSobrancelha() {
 	
@@ -50,6 +54,14 @@ public class HorarioSobrancelha implements Serializable{
 
 	public void setDia(Dia dia) {
 		this.dia = dia;
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 	
 	
