@@ -58,5 +58,13 @@ public class Login implements Serializable{
 		this.senha = senha;
 	}
 	
+	public Usuario getUsuario() {
+		return usuario;
+	}
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+		
+	}
+	
 
 }
