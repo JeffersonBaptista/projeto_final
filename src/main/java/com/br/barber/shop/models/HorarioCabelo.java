@@ -22,15 +22,17 @@ public class HorarioCabelo implements Serializable {
 
 	@NotBlank(message = "campo horario é obrigatorio ")
 	private String horario;
-	
-	@ManyToOne(cascade = {CascadeType.ALL})
-	private Dia dia;
-	
+
+	@NotBlank(message = "campo mes é obrigatorio ")
+	private String mes;
+
+	private int dia;
+
 	@OneToOne
 	private Usuario usuario;
 
 	public HorarioCabelo() {
-	
+
 	}
 
 	public Integer getId() {
@@ -49,11 +51,19 @@ public class HorarioCabelo implements Serializable {
 		this.horario = horario;
 	}
 
-	public Dia getDia() {
+	public String getMes() {
+		return mes;
+	}
+
+	public void setMes(String mes) {
+		this.mes = mes;
+	}
+
+	public int getDia() {
 		return dia;
 	}
 
-	public void setDia(Dia dia) {
+	public void setDia(int dia) {
 		this.dia = dia;
 	}
 
@@ -64,9 +74,5 @@ public class HorarioCabelo implements Serializable {
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
-	
-	
-	
-	
 
 }
