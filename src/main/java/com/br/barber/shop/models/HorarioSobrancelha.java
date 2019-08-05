@@ -12,7 +12,7 @@ import javax.persistence.OneToOne;
 import javax.validation.constraints.NotBlank;
 
 @Entity
-public class HorarioSobrancelha implements Serializable{
+public class HorarioSobrancelha implements Serializable {
 	private static final long serilVersionUID = 1L;
 
 	@Id
@@ -21,15 +21,17 @@ public class HorarioSobrancelha implements Serializable{
 
 	@NotBlank(message = "campo horario é obrigatorio ")
 	private String horario;
-	
-	@ManyToOne(cascade = {CascadeType.ALL})
-	private Dia dia;
-	
+
+	@NotBlank(message = "campo mes é obrigatorio ")
+	private String mes;
+
+	private int dia;
+
 	@OneToOne
 	private Usuario usuario;
 
 	public HorarioSobrancelha() {
-	
+
 	}
 
 	public Integer getId() {
@@ -48,11 +50,19 @@ public class HorarioSobrancelha implements Serializable{
 		this.horario = horario;
 	}
 
-	public Dia getDia() {
+	public String getMes() {
+		return mes;
+	}
+
+	public void setMes(String mes) {
+		this.mes = mes;
+	}
+
+	public int getDia() {
 		return dia;
 	}
 
-	public void setDia(Dia dia) {
+	public void setDia(int dia) {
 		this.dia = dia;
 	}
 
@@ -63,7 +73,5 @@ public class HorarioSobrancelha implements Serializable{
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
-	
-	
 
 }

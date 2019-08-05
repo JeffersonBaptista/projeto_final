@@ -11,8 +11,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotBlank;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
-public class HorarioBarba implements Serializable{
+public class HorarioBarba implements Serializable {
 	private static final long serilVersionUID = 1L;
 
 	@Id
@@ -21,10 +23,12 @@ public class HorarioBarba implements Serializable{
 
 	@NotBlank(message = "campo horario é obrigatorio ")
 	private String horario;
-	
-	@ManyToOne(cascade = {CascadeType.ALL})
-	private Dia dia;
-	
+
+	@NotBlank(message = "campo mes é obrigatorio ")
+	private String mes;
+
+	private int dia;
+
 	@OneToOne
 	private Usuario usuario;
 
@@ -48,11 +52,19 @@ public class HorarioBarba implements Serializable{
 		this.horario = horario;
 	}
 
-	public Dia getDia() {
+	public String getMes() {
+		return mes;
+	}
+
+	public void setMes(String mes) {
+		this.mes = mes;
+	}
+
+	public int getDia() {
 		return dia;
 	}
 
-	public void setDia(Dia dia) {
+	public void setDia(int dia) {
 		this.dia = dia;
 	}
 
@@ -64,6 +76,4 @@ public class HorarioBarba implements Serializable{
 		this.usuario = usuario;
 	}
 
-	
-	
 }
