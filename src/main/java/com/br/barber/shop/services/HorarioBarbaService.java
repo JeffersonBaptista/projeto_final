@@ -13,7 +13,7 @@ public class HorarioBarbaService {
 	@Autowired
 	HorarioBarbaRepositoty horarioBarbaRepositoty;
 
-	public Iterable<HorarioBarba> exibirTodosHorarios() {
+	public Iterable<HorarioBarba> exibirTodosHorariosBarba() {
 		return horarioBarbaRepositoty.findAll();
 	}
 
@@ -28,8 +28,16 @@ public class HorarioBarbaService {
 				barba.setDia(i);
 				barba.setMes(nomeMes);
 
-				barba.setHorario((hora) + " as " + (hora + 1));
+				barba.setHorario((hora) + ":00 as " + (hora) + ":30");
 				horarioBarbaRepositoty.save(barba);
+
+				HorarioBarba barba1 = new HorarioBarba();
+				barba1.setDia(i);
+				barba1.setMes(nomeMes);
+
+				barba1.setHorario((hora) + ":30 as " + (hora + 1)+":00");
+				horarioBarbaRepositoty.save(barba1);
+
 				hora++;
 			}
 

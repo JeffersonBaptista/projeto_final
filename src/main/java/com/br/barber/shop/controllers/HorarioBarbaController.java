@@ -26,7 +26,7 @@ public class HorarioBarbaController {
 	public ResponseEntity<?> exibirTodosHorariosBarba(){
 		
 		
-		return ResponseEntity.ok().body(horarioBarbaService.exibirTodosHorarios());
+		return ResponseEntity.ok().body(horarioBarbaService.exibirTodosHorariosBarba());
 		
 	}
 	
