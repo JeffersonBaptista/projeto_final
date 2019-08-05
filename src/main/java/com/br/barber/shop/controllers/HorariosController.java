@@ -38,26 +38,27 @@ public class HorariosController {
 		return ResponseEntity.ok().body(horarioBarbaService.exibirTodosHorariosBarba());
 
 	}
+
 	@GetMapping("todos/cabelo")
 	public ResponseEntity<?> exibirTodosHorariosCabelo() {
 
 		return ResponseEntity.ok().body(horarioCabeloService.exibirTodoshorariosCabelos());
 
 	}
+
 	@GetMapping("todos/pezinho")
 	public ResponseEntity<?> exibirTodosHorariosPesinho() {
 
 		return ResponseEntity.ok().body(horarioPezinhoService.exibirTodoshorariosCabelos());
 
 	}
+
 	@GetMapping("todos/sobrancelha")
 	public ResponseEntity<?> exibirTodosHorariosSobrancelha() {
 
 		return ResponseEntity.ok().body(horarioSobrancelhaService.exibirTodosHorariosSobrancelha());
 
 	}
-	
-	
 
 	@PostMapping("{nomeMes}/{diasMes}")
 	public ResponseEntity<?> gererHorarios(@PathVariable String nomeMes, @PathVariable int diasMes) {

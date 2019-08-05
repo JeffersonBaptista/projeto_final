@@ -36,7 +36,7 @@ public class HorarioPezinhoService {
 				pezinho1.setDia(i);
 				pezinho1.setMes(nomeMes);
 
-				pezinho1.setHorario((hora) + ":30 as " + (hora + 1)+":00");
+				pezinho1.setHorario((hora) + ":30 as " + (hora + 1) + ":00");
 				horarioPezinhoRepository.save(pezinho1);
 
 				hora++;
