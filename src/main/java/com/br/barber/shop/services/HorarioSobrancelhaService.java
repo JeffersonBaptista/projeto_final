@@ -16,6 +16,10 @@ public class HorarioSobrancelhaService {
 	public Iterable<HorarioSobrancelha> exibirTodosHorariosSobrancelha() {
 		return horarioSobrancelhaRepository.findAll();
 	}
+	
+	public long quantidadeHorarioSobrancelha() {
+		return horarioSobrancelhaRepository.count();
+	}
 
 	public void gerarHorariosSobrancelha(String nomeMes, int diasMes) {
 

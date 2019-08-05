@@ -49,7 +49,7 @@ public class HorariosController {
 	@GetMapping("todos/pezinho")
 	public ResponseEntity<?> exibirTodosHorariosPesinho() {
 
-		return ResponseEntity.ok().body(horarioPezinhoService.exibirTodoshorariosCabelos());
+		return ResponseEntity.ok().body(horarioPezinhoService.exibirTodoshorariosPezinho());
 
 	}
 
@@ -59,6 +59,9 @@ public class HorariosController {
 		return ResponseEntity.ok().body(horarioSobrancelhaService.exibirTodosHorariosSobrancelha());
 
 	}
+	
+	
+	
 
 	@PostMapping("{nomeMes}/{diasMes}")
 	public ResponseEntity<?> gererHorarios(@PathVariable String nomeMes, @PathVariable int diasMes) {

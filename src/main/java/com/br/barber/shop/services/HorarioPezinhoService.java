@@ -14,8 +14,11 @@ public class HorarioPezinhoService {
 	@Autowired
 	HorarioPezinhoRepository horarioPezinhoRepository;
 
-	public Iterable<HorarioPezinho> exibirTodoshorariosCabelos() {
+	public Iterable<HorarioPezinho> exibirTodoshorariosPezinho() {
 		return horarioPezinhoRepository.findAll();
+	}
+	public long quantidadeHorarioPezinho() {
+		return horarioPezinhoRepository.count();
 	}
 
 	public void gerarHorariosPezinho(String nomeMes, int diasMes) {

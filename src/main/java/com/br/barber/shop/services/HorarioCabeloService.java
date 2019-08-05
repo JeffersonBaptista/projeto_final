@@ -15,6 +15,10 @@ public class HorarioCabeloService {
 	public Iterable<HorarioCabelo> exibirTodoshorariosCabelos() {
 		return horarioCabeloRepository.findAll();
 	}
+	
+	public long quantidadeHorarioCabelo() {
+		return horarioCabeloRepository.count();
+	}
 
 	public void gerarHorariosCabelo(String nomeMes, int diasMes) {
 

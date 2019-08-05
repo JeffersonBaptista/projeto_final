@@ -16,6 +16,11 @@ public class HorarioBarbaService {
 	public Iterable<HorarioBarba> exibirTodosHorariosBarba() {
 		return horarioBarbaRepositoty.findAll();
 	}
+	 
+	
+	public long quantidadeHorarioBarba() {
+		return horarioBarbaRepositoty.count();
+	}
 
 	public void gerarHorariosBarba(String nomeMes, int diasMes) {
 
