@@ -16,10 +16,13 @@ public class Usuario implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	
 	@NotBlank(message = "Insira o nome .")
 	private String nome;
+	
 	@NotBlank(message = "Insira o sobrenome.")
 	private String sobrenome;
+	
 	@NotBlank(message = "Insira o telefone.")
 	@Size(min = 15, max = 15, message = "Número Obrigatório no seguinte formato : (xx) xxxxx-xxxx." )
 	private String telefone;

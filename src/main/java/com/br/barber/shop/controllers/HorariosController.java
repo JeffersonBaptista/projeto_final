@@ -7,13 +7,18 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.br.barber.shop.models.HorarioBarba;
+import com.br.barber.shop.models.Login;
+import com.br.barber.shop.models.Usuario;
 import com.br.barber.shop.services.HorarioBarbaService;
 import com.br.barber.shop.services.HorarioCabeloService;
 import com.br.barber.shop.services.HorarioPezinhoService;
 import com.br.barber.shop.services.HorarioSobrancelhaService;
+import com.br.barber.shop.services.UsuarioService;
 
 @CrossOrigin(origins = "*")
 @RestController
@@ -31,6 +36,9 @@ public class HorariosController {
 
 	@Autowired
 	HorarioSobrancelhaService horarioSobrancelhaService;
+	
+	@Autowired
+	UsuarioService usuarioService;
 
 	@GetMapping("todos/barba")
 	public ResponseEntity<?> exibirTodosHorariosBarba() {
@@ -78,5 +86,22 @@ public class HorariosController {
 
 		}
 	}
+	
+	@PutMapping("agendar/barba/{idHorario}/{idUsuario}")
+	public ResponseEntity<?> agendarCorteCabelo(@PathVariable int idHorario, @PathVariable int idUsuario){
+		
+		Usuario usuario = new Usuario();
+		usuario = usuarioService.pegarUsuarioPorID(idUsuario);
+		usuario.setId(idUsuario);
+		
+		HorarioBarba barba = new HorarioBarba();
+		barba = horarioBarbaService.pegarHorarioBarbaPorId(idHorario);
+		barba.setId(idHorario);
+		barba.setUsuario(usuario);
+		
+		horarioBarbaService.agendarBraba(barba);
+		return ResponseEntity.status(HttpStatus.CREATED).build();
+	}
+	
 
 }
