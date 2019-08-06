@@ -11,6 +11,8 @@ import javax.persistence.OneToOne;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 public class Login implements Serializable{
 	private static final long serialVersionUID = 1L; 
@@ -28,6 +30,7 @@ public class Login implements Serializable{
 	private String senha;
 	
 	@OneToOne(cascade = {CascadeType.ALL})
+	@JsonIgnoreProperties("login")
 	private Usuario usuario;
 	
 	public Login() {

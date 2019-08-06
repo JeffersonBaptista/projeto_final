@@ -9,6 +9,7 @@ import com.br.barber.shop.repositories.LoginRepository;
 
 @Service
 public class LoginService {
+	
 	@Autowired
 	private LoginRepository loginRepository;
 	
@@ -17,5 +18,31 @@ public class LoginService {
 		loginRepository.save(login);
 		return "Login cadastrado";
 	}
-
+	
+	public void atualizar(Login login) {
+		loginRepository.save(login);
+	}
+	
+	public Login buscarPorApelidoESenha(Login login) {
+		return loginRepository.findByApelidoAndSenha(login.getApelido(), login.getSenha()).get();
+	}
+	
+	public Iterable<Login> exibirTodosLogin(){
+		return loginRepository.findAll();
+	}
+	
+	public void salvarLogin(Login login) {
+		loginRepository.save(login);
+	}
+	
+	public void deleteById(int id) {
+		loginRepository.deleteById(id);
+	}
+	public long count() {
+		return loginRepository.count();
+	}
+	
+	public Iterable<Login> findAll(){
+		return loginRepository.findAll();
+	}
 }
