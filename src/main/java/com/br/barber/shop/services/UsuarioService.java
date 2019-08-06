@@ -8,11 +8,6 @@ import com.br.barber.shop.repositories.UsuarioRepository;
 
 @Service
 public class UsuarioService {
-//	
-//		
-//	public Usuario pegarUsuarioPorID(int id) {
-//		return usuarioRepository.findById(id).get();
-//		
-//	}
+
 
 }
