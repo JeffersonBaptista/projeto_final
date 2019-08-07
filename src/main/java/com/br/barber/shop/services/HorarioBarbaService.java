@@ -16,6 +16,14 @@ public class HorarioBarbaService {
 	public Iterable<HorarioBarba> exibirTodosHorariosBarba() {
 		return horarioBarbaRepositoty.findAll();
 	}
+	
+	public HorarioBarba pegarHorarioBarbaPorId(int id) {
+		return horarioBarbaRepositoty.findById(id).get();
+	}
+	
+	public void agendarBarba(HorarioBarba barbaAgendada) {
+		horarioBarbaRepositoty.save(barbaAgendada);
+	}
 	 
 	
 	public long quantidadeHorarioBarba() {

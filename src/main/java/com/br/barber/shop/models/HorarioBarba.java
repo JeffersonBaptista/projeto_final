@@ -29,7 +29,8 @@ public class HorarioBarba implements Serializable {
 
 	private int dia;
 
-	@OneToOne
+	@ManyToOne
+	@JsonIgnoreProperties("barba")
 	private Usuario usuario;
 
 	public HorarioBarba() {

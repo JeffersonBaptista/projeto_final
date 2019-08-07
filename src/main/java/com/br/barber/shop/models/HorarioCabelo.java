@@ -28,7 +28,7 @@ public class HorarioCabelo implements Serializable {
 
 	private int dia;
 
-	@OneToOne
+	@ManyToOne
 	private Usuario usuario;
 
 	public HorarioCabelo() {

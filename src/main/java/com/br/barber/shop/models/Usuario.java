@@ -1,14 +1,18 @@
 package com.br.barber.shop.models;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Entity
 public class Usuario implements Serializable{
 	private static final long serialVersionUID = 1L; 
@@ -16,28 +20,32 @@ public class Usuario implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	
 	@NotBlank(message = "Insira o nome .")
 	private String nome;
+	
 	@NotBlank(message = "Insira o sobrenome.")
 	private String sobrenome;
+	
 	@NotBlank(message = "Insira o telefone.")
-	@Size(min = 15, max = 15, message = "Número Obrigatório no seguinte formato : (xx) xxxxx-xxxx." )
+    @Size(min = 15, max = 15, message = "Número Obrigatório no seguinte formato : (xx) xxxxx-xxxx." )
 	private String telefone;
 	
 	@OneToOne(mappedBy = "usuario")
+	@JsonIgnoreProperties("usuario")
 	private Login login;
 	
-	@OneToOne(mappedBy = "usuario")
-	private HorarioBarba barba;
+	@OneToMany(mappedBy = "usuario")
+	private List<HorarioBarba> barba;
 	 
-	@OneToOne(mappedBy = "usuario")
-	private HorarioPezinho pezinho;
+	@OneToMany(mappedBy = "usuario")
+	private List<HorarioPezinho> pezinho;
 	
-	@OneToOne(mappedBy = "usuario")
-	private HorarioCabelo cabelo;
+	@OneToMany(mappedBy = "usuario")
+	private List<HorarioCabelo> cabelo;
 	
-	@OneToOne(mappedBy = "usuario")
-	private HorarioSobrancelha sobrancelha;
+	@OneToMany(mappedBy = "usuario")
+	private List<HorarioSobrancelha> sobrancelha;
 	
 	
 	public Usuario() {
@@ -84,37 +92,39 @@ public class Usuario implements Serializable{
 		this.login = login;
 	}
 
-	public HorarioBarba getBarba() {
+	public List<HorarioBarba> getBarba() {
 		return barba;
 	}
 
-	public void setBarba(HorarioBarba barba) {
+	public void setBarba(List<HorarioBarba> barba) {
 		this.barba = barba;
 	}
 
-	public HorarioPezinho getPezinho() {
+	public List<HorarioPezinho> getPezinho() {
 		return pezinho;
 	}
 
-	public void setPezinho(HorarioPezinho pezinho) {
+	public void setPezinho(List<HorarioPezinho> pezinho) {
 		this.pezinho = pezinho;
 	}
 
-	public HorarioCabelo getCabelo() {
+	public List<HorarioCabelo> getCabelo() {
 		return cabelo;
 	}
 
-	public void setCabelo(HorarioCabelo cabelo) {
+	public void setCabelo(List<HorarioCabelo> cabelo) {
 		this.cabelo = cabelo;
 	}
 
-	public HorarioSobrancelha getSobrancelha() {
+	public List<HorarioSobrancelha> getSobrancelha() {
 		return sobrancelha;
 	}
 
-	public void setSobrancelha(HorarioSobrancelha sobrancelha) {
+	public void setSobrancelha(List<HorarioSobrancelha> sobrancelha) {
 		this.sobrancelha = sobrancelha;
 	}
+
+
 	
 	
 

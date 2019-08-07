@@ -28,4 +28,8 @@ public class UsuarioService {
 		return usuarioRepository.count();
 	}
 	
+	public Usuario pegarUsuarioPorID(int id) {
+		return usuarioRepository.findById(id).get();
+	}
+	
 }
