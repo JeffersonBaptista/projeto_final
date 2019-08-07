@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.br.barber.shop.models.HorarioBarba;
 import com.br.barber.shop.models.HorarioPezinho;
+import com.br.barber.shop.models.HorarioSobrancelha;
 import com.br.barber.shop.models.Usuario;
 import com.br.barber.shop.services.HorarioBarbaService;
 import com.br.barber.shop.services.HorarioCabeloService;
@@ -113,5 +114,15 @@ public class HorariosController {
 		horarioPezinhoService.agendarPezinho(pezinho);
 		return ResponseEntity.status(HttpStatus.CREATED).build();
 		
+	}
+	@PutMapping("agendar/sobrancelha/{idHorario}")
+	public ResponseEntity<?> agendarSobrancelha(@PathVariable int idHorario, @RequestBody HorarioSobrancelha novoAgendamentoSobrancelha){
+		Usuario usuario = usuarioService.pegarUsuarioPorID(novoAgendamentoSobrancelha.getUsuario().getId());
+		
+		HorarioSobrancelha sobrancelha = horarioSobrancelhaService.pegarHorarioPorId(idHorario);
+		sobrancelha.setUsuario(usuario);
+		
+		horarioSobrancelhaService.agendarSobrancelha(sobrancelha);
+		return ResponseEntity.status(HttpStatus.CREATED).build();
 	}
 }

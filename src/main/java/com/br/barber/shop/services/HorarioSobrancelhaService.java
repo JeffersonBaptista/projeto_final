@@ -20,6 +20,13 @@ public class HorarioSobrancelhaService {
 	public long quantidadeHorarioSobrancelha() {
 		return horarioSobrancelhaRepository.count();
 	}
+	public HorarioSobrancelha pegarHorarioPorId(int id) {
+		 return horarioSobrancelhaRepository.findById(id).get();
+	 }
+	 
+	 public void agendarSobrancelha(HorarioSobrancelha horarioSobrancelha) {
+		 horarioSobrancelhaRepository.save(horarioSobrancelha);
+	 }
 
 	public void gerarHorariosSobrancelha(String nomeMes, int diasMes) {
 
