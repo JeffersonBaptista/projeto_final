@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.br.barber.shop.models.HorarioBarba;
+import com.br.barber.shop.models.HorarioPezinho;
 import com.br.barber.shop.models.Usuario;
 import com.br.barber.shop.services.HorarioBarbaService;
 import com.br.barber.shop.services.HorarioCabeloService;
@@ -102,4 +103,15 @@ public class HorariosController {
 
 	}
 	
+	@PutMapping("agendar/pezinho/{idHorario}")
+	public ResponseEntity<?> agendarPezinho(@PathVariable int idHorario, @RequestBody HorarioPezinho novoAgendamentoPezinho){
+		Usuario usuario = usuarioService.pegarUsuarioPorID(novoAgendamentoPezinho.getUsuario().getId());
+		
+		HorarioPezinho pezinho = horarioPezinhoService.pegarHorarioPorId(idHorario);
+		pezinho.setUsuario(usuario);
+		
+		horarioPezinhoService.agendarPezinho(pezinho);
+		return ResponseEntity.status(HttpStatus.CREATED).build();
+		
+	}
 }

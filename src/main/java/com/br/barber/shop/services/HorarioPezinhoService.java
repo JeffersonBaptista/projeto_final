@@ -20,6 +20,15 @@ public class HorarioPezinhoService {
 	public long quantidadeHorarioPezinho() {
 		return horarioPezinhoRepository.count();
 	}
+	
+	 public HorarioPezinho pegarHorarioPorId(int id) {
+		 return horarioPezinhoRepository.findById(id).get();
+	 }
+	 
+	 public void agendarPezinho(HorarioPezinho horarioPezinho) {
+		 horarioPezinhoRepository.save(horarioPezinho);
+	 }
+	 
 
 	public void gerarHorariosPezinho(String nomeMes, int diasMes) {
 
@@ -46,6 +55,7 @@ public class HorarioPezinhoService {
 			}
 
 		}
+		
 
 	}
 
