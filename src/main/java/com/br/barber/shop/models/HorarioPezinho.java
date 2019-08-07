@@ -27,7 +27,7 @@ public class HorarioPezinho implements Serializable {
 
 	private int dia;
 
-	@OneToOne
+	@ManyToOne
 	private Usuario usuario;
 
 	public HorarioPezinho() {
