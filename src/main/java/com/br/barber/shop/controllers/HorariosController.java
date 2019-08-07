@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.br.barber.shop.models.HorarioBarba;
@@ -28,14 +30,14 @@ public class HorariosController {
 	private HorarioBarbaService horarioBarbaService;
 
 	@Autowired
-	 private HorarioCabeloService horarioCabeloService;
+	private HorarioCabeloService horarioCabeloService;
 
 	@Autowired
-	 private HorarioPezinhoService horarioPezinhoService;
+	private HorarioPezinhoService horarioPezinhoService;
 
 	@Autowired
-	 private HorarioSobrancelhaService horarioSobrancelhaService;
-	
+	private HorarioSobrancelhaService horarioSobrancelhaService;
+
 	@Autowired
 	private UsuarioService usuarioService;
 
@@ -54,7 +56,7 @@ public class HorariosController {
 	}
 
 	@GetMapping("todos/pezinho")
-	public ResponseEntity<?> exibirTodosHorariosPesinho() {
+	public ResponseEntity<?> exibirTodosHorariosPezinho() {
 
 		return ResponseEntity.ok().body(horarioPezinhoService.exibirTodoshorariosPezinho());
 
@@ -68,7 +70,7 @@ public class HorariosController {
 	}
 
 	@PostMapping("{nomeMes}/{diasMes}")
-	public ResponseEntity<?> gererHorarios(@PathVariable String nomeMes, @PathVariable int diasMes) {
+	public ResponseEntity<?> gerarHorarios(@PathVariable String nomeMes, @PathVariable int diasMes) {
 
 		try {
 			horarioBarbaService.gerarHorariosBarba(nomeMes, diasMes);
@@ -82,22 +84,22 @@ public class HorariosController {
 
 		}
 	}
-	@PutMapping("agendar/barba/{idHorario}/{idUsuario}")
-	public ResponseEntity<?> agendarCorteCabelo(@PathVariable int idHorario, @PathVariable int idUsuario){
-		
-		Usuario usuario = new Usuario();
-		usuario = usuarioService.pegarUsuarioPorID(idUsuario);
-		usuario.setId(idUsuario);
-		
-		HorarioBarba barba = new HorarioBarba();
-		barba = horarioBarbaService.pegarHorarioBarbaPorId(idHorario);
-		barba.setId(idHorario);
+
+	@PutMapping("agendar/barba/{idHorario}")
+	public ResponseEntity<?> agendarCorteBarba(@PathVariable int idHorario, @RequestBody HorarioBarba novoAgendamento) {
+		Usuario usuario = usuarioService.pegarUsuarioPorID(novoAgendamento.getUsuario().getId());
+
+		HorarioBarba barba = horarioBarbaService.pegarHorarioBarbaPorId(idHorario);
 		barba.setUsuario(usuario);
 
-		
 		horarioBarbaService.agendarBarba(barba);
 		return ResponseEntity.status(HttpStatus.CREATED).build();
 	}
-	
 
+	@GetMapping("horario/barba")
+	public ResponseEntity<?> horariosBarbaNuloPorDia(@RequestParam(required = false) int dia) {
+		return ResponseEntity.ok().body(horarioBarbaService.horariosBarbaNuloPorDia(dia));
+
+	}
+	
 }
