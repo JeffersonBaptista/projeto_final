@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.br.barber.shop.models.HorarioBarba;
+import com.br.barber.shop.models.HorarioCabelo;
 import com.br.barber.shop.models.HorarioPezinho;
 import com.br.barber.shop.models.HorarioSobrancelha;
 import com.br.barber.shop.models.Usuario;
@@ -103,26 +104,42 @@ public class HorariosController {
 		return ResponseEntity.ok().body(horarioBarbaService.horariosBarbaNuloPorDia(dia));
 
 	}
-	
+
 	@PutMapping("agendar/pezinho/{idHorario}")
-	public ResponseEntity<?> agendarPezinho(@PathVariable int idHorario, @RequestBody HorarioPezinho novoAgendamentoPezinho){
+	public ResponseEntity<?> agendarPezinho(@PathVariable int idHorario,
+			@RequestBody HorarioPezinho novoAgendamentoPezinho) {
 		Usuario usuario = usuarioService.pegarUsuarioPorID(novoAgendamentoPezinho.getUsuario().getId());
-		
+
 		HorarioPezinho pezinho = horarioPezinhoService.pegarHorarioPorId(idHorario);
 		pezinho.setUsuario(usuario);
-		
+
 		horarioPezinhoService.agendarPezinho(pezinho);
 		return ResponseEntity.status(HttpStatus.CREATED).build();
-		
+
 	}
+
 	@PutMapping("agendar/sobrancelha/{idHorario}")
-	public ResponseEntity<?> agendarSobrancelha(@PathVariable int idHorario, @RequestBody HorarioSobrancelha novoAgendamentoSobrancelha){
+	public ResponseEntity<?> agendarSobrancelha(@PathVariable int idHorario,
+			@RequestBody HorarioSobrancelha novoAgendamentoSobrancelha) {
 		Usuario usuario = usuarioService.pegarUsuarioPorID(novoAgendamentoSobrancelha.getUsuario().getId());
-		
+
 		HorarioSobrancelha sobrancelha = horarioSobrancelhaService.pegarHorarioPorId(idHorario);
 		sobrancelha.setUsuario(usuario);
-		
+
 		horarioSobrancelhaService.agendarSobrancelha(sobrancelha);
 		return ResponseEntity.status(HttpStatus.CREATED).build();
+	}
+
+	@PutMapping("agendar/cabelo/{idHorario}")
+	public ResponseEntity<?> agendarCabelo(@PathVariable int idHorario,
+			@RequestBody HorarioCabelo novoAgendamentoCabelo) {
+		Usuario usuario = usuarioService.pegarUsuarioPorID(novoAgendamentoCabelo.getUsuario().getId());
+
+		HorarioCabelo cabelo = horarioCabeloService.pegarHorarioPorId(idHorario);
+		cabelo.setUsuario(usuario);
+
+		horarioCabeloService.agendarCabelo(cabelo);
+		return ResponseEntity.status(HttpStatus.CREATED).build();
+
 	}
 }

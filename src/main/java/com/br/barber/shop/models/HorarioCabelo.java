@@ -12,6 +12,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotBlank;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 public class HorarioCabelo implements Serializable {
 	private static final long serilVersionUID = 1L;
@@ -29,6 +31,7 @@ public class HorarioCabelo implements Serializable {
 	private int dia;
 
 	@ManyToOne
+	@JsonIgnoreProperties("cabelo")
 	private Usuario usuario;
 
 	public HorarioCabelo() {
