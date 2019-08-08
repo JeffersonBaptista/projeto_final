@@ -58,5 +58,10 @@ public class HorarioPezinhoService {
 		
 
 	}
+	
+	public Iterable<HorarioPezinho> horariosPezinhoNuloPorDia( int dia){
+		return horarioPezinhoRepository.findByDiaAndUsuarioIsNull(dia);
+		
+	}
 
 }

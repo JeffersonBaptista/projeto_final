@@ -55,5 +55,10 @@ public class HorarioSobrancelhaService {
 		}
 
 	}
+	
+	public Iterable<HorarioSobrancelha> horariosSobrancelhaNuloPorDia( int dia){
+		return horarioSobrancelhaRepository.findByDiaAndUsuarioIsNull(dia);
+		
+	}
 
 }
