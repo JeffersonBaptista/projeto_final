@@ -8,5 +8,5 @@ import com.br.barber.shop.models.HorarioCabelo;
 @Repository
 public interface HorarioCabeloRepository extends CrudRepository<HorarioCabelo, Integer> {
 
-	public Iterable<HorarioCabelo> findByDiaAndUsuarioIsNull(int dia);
+	public Iterable<HorarioCabelo> findByDiaAndMesAndUsuarioIsNull(int dia, String mes);
 }

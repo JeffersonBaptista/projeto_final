@@ -50,8 +50,8 @@ public class HorarioCabeloService {
 
 	}
 	
-	public Iterable<HorarioCabelo> horariosCabeloNuloPorDia( int dia){
-		return horarioCabeloRepository.findByDiaAndUsuarioIsNull(dia);
+	public Iterable<HorarioCabelo> horariosCabeloNuloPorDia( int dia, String mes){
+		return horarioCabeloRepository.findByDiaAndMesAndUsuarioIsNull(dia, mes);
 		
 	}
 
