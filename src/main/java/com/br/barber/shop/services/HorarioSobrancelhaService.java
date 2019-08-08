@@ -56,8 +56,8 @@ public class HorarioSobrancelhaService {
 
 	}
 	
-	public Iterable<HorarioSobrancelha> horariosSobrancelhaNuloPorDia( int dia){
-		return horarioSobrancelhaRepository.findByDiaAndUsuarioIsNull(dia);
+	public Iterable<HorarioSobrancelha> horariosSobrancelhaNuloPorDia( int dia, String mes){
+		return horarioSobrancelhaRepository.findByDiaAndMesAndUsuarioIsNull(dia, mes);
 		
 	}
 

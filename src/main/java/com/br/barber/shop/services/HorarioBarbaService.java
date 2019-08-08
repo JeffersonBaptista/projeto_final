@@ -57,8 +57,8 @@ public class HorarioBarbaService {
 		}
 
 	}
-	public Iterable<HorarioBarba> horariosBarbaNuloPorDia( int dia){
-		return horarioBarbaRepositoty.findByDiaAndUsuarioIsNull(dia);
+	public Iterable<HorarioBarba> horariosBarbaNuloPorDia( int dia,String mes){
+		return horarioBarbaRepositoty.findByDiaAndMesAndUsuarioIsNull(dia, mes);
 		
 	}
 
