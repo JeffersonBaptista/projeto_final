@@ -72,10 +72,11 @@ public class HorariosController {
 
 	}
 
-	@PostMapping("{nomeMes}/{diasMes}")
-	public ResponseEntity<?> gerarHorarios(@PathVariable String nomeMes, @PathVariable int diasMes) {
+	@PostMapping("criar/mes/{diasMes}")
+	public ResponseEntity<?> gerarHorarios(@PathVariable int diasMes, @RequestBody HorarioCabelo horario) {
 
 		try {
+			String nomeMes = horario.getMes();
 			horarioBarbaService.gerarHorariosBarba(nomeMes, diasMes);
 			horarioCabeloService.gerarHorariosCabelo(nomeMes, diasMes);
 			horarioSobrancelhaService.gerarHorariosSobrancelha(nomeMes, diasMes);
