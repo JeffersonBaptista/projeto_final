@@ -3,6 +3,7 @@ package com.br.barber.shop.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.br.barber.shop.models.HorarioBarba;
 import com.br.barber.shop.models.HorarioCabelo;
 import com.br.barber.shop.models.HorarioPezinho;
 import com.br.barber.shop.repositories.HorarioCabeloRepository;
@@ -48,5 +49,11 @@ public class HorarioCabeloService {
 		}
 
 	}
+	
+	public Iterable<HorarioCabelo> horariosCabeloNuloPorDia( int dia){
+		return horarioCabeloRepository.findByDiaAndUsuarioIsNull(dia);
+		
+	}
+
 
 }

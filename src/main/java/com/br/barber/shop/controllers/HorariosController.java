@@ -90,56 +90,112 @@ public class HorariosController {
 
 	@PutMapping("agendar/barba/{idHorario}")
 	public ResponseEntity<?> agendarCorteBarba(@PathVariable int idHorario, @RequestBody HorarioBarba novoAgendamento) {
-		Usuario usuario = usuarioService.pegarUsuarioPorID(novoAgendamento.getUsuario().getId());
+		try {
+			Usuario usuario = usuarioService.pegarUsuarioPorID(novoAgendamento.getUsuario().getId());
 
-		HorarioBarba barba = horarioBarbaService.pegarHorarioBarbaPorId(idHorario);
-		barba.setUsuario(usuario);
+			HorarioBarba barba = horarioBarbaService.pegarHorarioBarbaPorId(idHorario);
+			barba.setUsuario(usuario);
 
-		horarioBarbaService.agendarBarba(barba);
-		return ResponseEntity.status(HttpStatus.CREATED).build();
-	}
-
-	@GetMapping("horario/barba")
-	public ResponseEntity<?> horariosBarbaNuloPorDia(@RequestParam(required = false) int dia) {
-		return ResponseEntity.ok().body(horarioBarbaService.horariosBarbaNuloPorDia(dia));
+			horarioBarbaService.agendarBarba(barba);
+			return ResponseEntity.status(HttpStatus.CREATED).build();
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e);
+		}
 
 	}
 
 	@PutMapping("agendar/pezinho/{idHorario}")
 	public ResponseEntity<?> agendarPezinho(@PathVariable int idHorario,
 			@RequestBody HorarioPezinho novoAgendamentoPezinho) {
-		Usuario usuario = usuarioService.pegarUsuarioPorID(novoAgendamentoPezinho.getUsuario().getId());
 
-		HorarioPezinho pezinho = horarioPezinhoService.pegarHorarioPorId(idHorario);
-		pezinho.setUsuario(usuario);
+		try {
+			Usuario usuario = usuarioService.pegarUsuarioPorID(novoAgendamentoPezinho.getUsuario().getId());
 
-		horarioPezinhoService.agendarPezinho(pezinho);
-		return ResponseEntity.status(HttpStatus.CREATED).build();
+			HorarioPezinho pezinho = horarioPezinhoService.pegarHorarioPorId(idHorario);
+			pezinho.setUsuario(usuario);
+
+			horarioPezinhoService.agendarPezinho(pezinho);
+			return ResponseEntity.status(HttpStatus.CREATED).build();
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e);
+		}
 
 	}
 
 	@PutMapping("agendar/sobrancelha/{idHorario}")
 	public ResponseEntity<?> agendarSobrancelha(@PathVariable int idHorario,
 			@RequestBody HorarioSobrancelha novoAgendamentoSobrancelha) {
-		Usuario usuario = usuarioService.pegarUsuarioPorID(novoAgendamentoSobrancelha.getUsuario().getId());
+		try {
+			Usuario usuario = usuarioService.pegarUsuarioPorID(novoAgendamentoSobrancelha.getUsuario().getId());
 
-		HorarioSobrancelha sobrancelha = horarioSobrancelhaService.pegarHorarioPorId(idHorario);
-		sobrancelha.setUsuario(usuario);
+			HorarioSobrancelha sobrancelha = horarioSobrancelhaService.pegarHorarioPorId(idHorario);
+			sobrancelha.setUsuario(usuario);
 
-		horarioSobrancelhaService.agendarSobrancelha(sobrancelha);
-		return ResponseEntity.status(HttpStatus.CREATED).build();
+			horarioSobrancelhaService.agendarSobrancelha(sobrancelha);
+			return ResponseEntity.status(HttpStatus.CREATED).build();
+
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e);
+		}
+
 	}
 
 	@PutMapping("agendar/cabelo/{idHorario}")
 	public ResponseEntity<?> agendarCabelo(@PathVariable int idHorario,
 			@RequestBody HorarioCabelo novoAgendamentoCabelo) {
-		Usuario usuario = usuarioService.pegarUsuarioPorID(novoAgendamentoCabelo.getUsuario().getId());
+		
+		try {
+			Usuario usuario = usuarioService.pegarUsuarioPorID(novoAgendamentoCabelo.getUsuario().getId());
 
-		HorarioCabelo cabelo = horarioCabeloService.pegarHorarioPorId(idHorario);
-		cabelo.setUsuario(usuario);
+			HorarioCabelo cabelo = horarioCabeloService.pegarHorarioPorId(idHorario);
+			cabelo.setUsuario(usuario);
 
-		horarioCabeloService.agendarCabelo(cabelo);
-		return ResponseEntity.status(HttpStatus.CREATED).build();
+			horarioCabeloService.agendarCabelo(cabelo);
+			return ResponseEntity.status(HttpStatus.CREATED).build();
+
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e);
+		}
+		
+	}
+
+	@GetMapping("horarios/barba/disponiveis")
+	public ResponseEntity<?> horariosBarbaNuloPorDia(@RequestParam(required = false) int dia) {
+		try {
+			return ResponseEntity.ok().body(horarioBarbaService.horariosBarbaNuloPorDia(dia));
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e);
+		}
+
+	}
+
+	@GetMapping("horarios/cabelo/disponiveis")
+	public ResponseEntity<?> horariosCabeloNuloPorDia(@RequestParam(required = false) int dia) {
+		try {
+			return ResponseEntity.ok().body(horarioCabeloService.horariosCabeloNuloPorDia(dia));
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e);
+		}
+
+	}
+
+	@GetMapping("horarios/pezinho/disponiveis")
+	public ResponseEntity<?> horariosPezinhoNuloPorDia(@RequestParam(required = false) int dia) {
+		try {
+			return ResponseEntity.ok().body(horarioCabeloService.horariosCabeloNuloPorDia(dia));
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e);
+		}
+
+	}
+
+	@GetMapping("horarios/sobrancelha/disponiveis")
+	public ResponseEntity<?> horariosSobrancelhaNuloPorDia(@RequestParam(required = false) int dia) {
+		try {
+			return ResponseEntity.ok().body(horarioCabeloService.horariosCabeloNuloPorDia(dia));
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e);
+		}
 
 	}
 }
