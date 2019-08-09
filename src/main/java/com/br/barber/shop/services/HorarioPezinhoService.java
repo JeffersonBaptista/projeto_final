@@ -64,11 +64,8 @@ public class HorarioPezinhoService {
 		return horarioPezinhoRepository.findByDiaAndMesAndUsuarioIsNull(dia, mes);
 		
 	}
-	
-/*
+
 	public Iterable<HorarioPezinho> horariosAgendadosPorDia(int dia, String mes){
 		return horarioPezinhoRepository.findByDiaAndMesAndUsuarioIsNotNull(dia, mes);
 	}
-	*/
-	
 }

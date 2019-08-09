@@ -203,9 +203,9 @@ public class HorariosController {
 		}
 	}
 	
-	/*
+	
 	@GetMapping("horarios/pezinho/agendados")
-	public ResponseEntity<?> horariosPezinhoAgendadosPorDia(int dia,String mes){
+	public ResponseEntity<?> horariosPezinhoAgendadosPorDia(@PathVariable int dia, @PathVariable String mes){
 		try {
 			return ResponseEntity.ok().body(horarioPezinhoService.horariosAgendadosPorDia(dia, mes));
 		}
@@ -213,6 +213,5 @@ public class HorariosController {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e);		
 		}
 	}
-	*/
 
 }
