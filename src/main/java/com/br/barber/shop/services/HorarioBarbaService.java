@@ -61,5 +61,8 @@ public class HorarioBarbaService {
 		return horarioBarbaRepositoty.findByDiaAndMesAndUsuarioIsNull(dia, mes);
 		
 	}
+	public Iterable<HorarioBarba> horariosAgendadosPorDia(int dia, String mes) {
+		return horarioBarbaRepositoty.findByDiaAndMesAndUsuarioIsNotNull(dia, mes);
+	}
 
 }
