@@ -197,34 +197,39 @@ public class HorariosController {
 	public ResponseEntity<?> horariosSobrancelhaNuloPorDia(@RequestParam(required = false) int dia,
 			@RequestParam(required = false) String mes) {
 		try {
-			return ResponseEntity.ok().body(horarioCabeloService.horariosCabeloNuloPorDia(dia,mes));
+			return ResponseEntity.ok().body(horarioCabeloService.horariosCabeloNuloPorDia(dia, mes));
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e);
 		}
 	}
-	
-	
+
 	@GetMapping("horarios/pezinho/agendados")
 	public ResponseEntity<?> horariosPezinhoAgendadosPorDia(@RequestParam(required = false) int dia,
-			@RequestParam(required = false) String mes){
+			@RequestParam(required = false) String mes) {
 		try {
 			return ResponseEntity.ok().body(horarioPezinhoService.horariosAgendadosPorDia(dia, mes));
-		}
-		 catch (Exception e) {
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e);		
-		}
-	}
-	
-	
-	@GetMapping("horarios/barba/agendados")
-	public ResponseEntity<?> horariosBarbaAgendadosPorDia(@RequestParam(required = false) int dia,
-			@RequestParam(required = false) String mes){
-		try {
-			return ResponseEntity.ok().body(horarioBarbaService.horariosAgendadosPorDia(dia, mes));
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e);
 		}
 	}
 
+	@GetMapping("horarios/barba/agendados")
+	public ResponseEntity<?> horariosBarbaAgendadosPorDia(@RequestParam(required = false) int dia,
+			@RequestParam(required = false) String mes) {
+		try {
+			return ResponseEntity.ok().body(horarioBarbaService.horariosAgendadosPorDia(dia, mes));
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e);
+		}
+	}
+
+	@GetMapping("horarios/cabelo/agendados")
+	public ResponseEntity<?> horariosCabeloAgendadosPorDia(@RequestParam(required = false) int dia,
+			@RequestParam(required = false) String mes) {
+		try {
+			return ResponseEntity.ok().body(horarioCabeloService.horariosAgendadosPorDia(dia, mes));
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e);
+		}
+	}
 }

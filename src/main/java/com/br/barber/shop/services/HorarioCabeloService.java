@@ -17,18 +17,18 @@ public class HorarioCabeloService {
 	public Iterable<HorarioCabelo> exibirTodoshorariosCabelos() {
 		return horarioCabeloRepository.findAll();
 	}
-	
+
 	public long quantidadeHorarioCabelo() {
 		return horarioCabeloRepository.count();
 	}
-	
+
 	public HorarioCabelo pegarHorarioPorId(int id) {
-		 return horarioCabeloRepository.findById(id).get();
-	 }
-	 
-	 public void agendarCabelo(HorarioCabelo horarioCabelo) {
-		 horarioCabeloRepository.save(horarioCabelo);
-	 }
+		return horarioCabeloRepository.findById(id).get();
+	}
+
+	public void agendarCabelo(HorarioCabelo horarioCabelo) {
+		horarioCabeloRepository.save(horarioCabelo);
+	}
 
 	public void gerarHorariosCabelo(String nomeMes, int diasMes) {
 
@@ -49,11 +49,14 @@ public class HorarioCabeloService {
 		}
 
 	}
-	
-	public Iterable<HorarioCabelo> horariosCabeloNuloPorDia( int dia, String mes){
+
+	public Iterable<HorarioCabelo> horariosCabeloNuloPorDia(int dia, String mes) {
 		return horarioCabeloRepository.findByDiaAndMesAndUsuarioIsNull(dia, mes);
-		
+
 	}
 
+	public Iterable<HorarioCabelo> horariosAgendadosPorDia(int dia, String mes) {
+		return horarioCabeloRepository.findByDiaAndMesAndUsuarioIsNotNull(dia, mes);
+	}
 
 }
