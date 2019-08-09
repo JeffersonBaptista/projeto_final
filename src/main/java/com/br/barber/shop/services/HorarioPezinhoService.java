@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import com.br.barber.shop.models.HorarioBarba;
 import com.br.barber.shop.models.HorarioCabelo;
 import com.br.barber.shop.models.HorarioPezinho;
+import com.br.barber.shop.models.Usuario;
 import com.br.barber.shop.repositories.HorarioPezinhoRepository;
 
 @Service
@@ -63,5 +64,11 @@ public class HorarioPezinhoService {
 		return horarioPezinhoRepository.findByDiaAndMesAndUsuarioIsNull(dia, mes);
 		
 	}
-
+	
+/*
+	public Iterable<HorarioPezinho> horariosAgendadosPorDia(int dia, String mes){
+		return horarioPezinhoRepository.findByDiaAndMesAndUsuarioIsNotNull(dia, mes);
+	}
+	*/
+	
 }
