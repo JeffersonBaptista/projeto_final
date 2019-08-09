@@ -9,4 +9,6 @@ import com.br.barber.shop.models.HorarioSobrancelha;
 public interface HorarioSobrancelhaRepository extends CrudRepository<HorarioSobrancelha, Integer> {
 
 	public Iterable<HorarioSobrancelha> findByDiaAndMesAndUsuarioIsNull(int dia, String mes);
+	
+	public Iterable<HorarioSobrancelha> findByDiaAndMesAndUsuarioIsNotNull(int dia, String mes);
 }
