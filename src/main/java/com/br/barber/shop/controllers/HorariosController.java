@@ -232,17 +232,85 @@ public class HorariosController {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e);
 		}
 	}
-		@GetMapping("horarios/sobrancelha/agendados")
-		public ResponseEntity<?> horariosSobrancelhaAgendadosPorDia(@RequestParam(required = false) int dia, 
-				@RequestParam(required = false) String mes){
-			
-			try {
-				return ResponseEntity.ok().body(horarioSobrancelhaService.horariosAgendadosPorDia(dia, mes));
-			} 
-			catch(Exception e) {
-				return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e);
-			}
+
+	@GetMapping("horarios/sobrancelha/agendados")
+	public ResponseEntity<?> horariosSobrancelhaAgendadosPorDia(@RequestParam(required = false) int dia,
+			@RequestParam(required = false) String mes) {
+
+		try {
+			return ResponseEntity.ok().body(horarioSobrancelhaService.horariosAgendadosPorDia(dia, mes));
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e);
 		}
-		
 	}
 
+	@PutMapping("atualizar/horario/cabelo/{id}")
+	public ResponseEntity<?> atualizarHorariosCabelo(@PathVariable int id, @RequestBody HorarioCabelo atualizar) {
+
+		try {
+			Usuario usuario = atualizar.getUsuario();
+
+			HorarioCabelo cabelo = horarioCabeloService.pegarHorarioPorId(id);
+			cabelo.setUsuario(usuario);
+
+			horarioCabeloService.agendarCabelo(cabelo);
+			return ResponseEntity.ok().build();
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e);
+		}
+
+	}
+
+	@PutMapping("atualizar/horario/barba/{id}")
+	public ResponseEntity<?> atualizarHorariosBarba(@PathVariable int id, @RequestBody HorarioBarba atualizar) {
+
+		try {
+			Usuario usuario = atualizar.getUsuario();
+
+			HorarioBarba barba = horarioBarbaService.pegarHorarioBarbaPorId(id);
+			barba.setUsuario(usuario);
+
+			horarioBarbaService.agendarBarba(barba);
+			return ResponseEntity.ok().build();
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e);
+		}
+
+	}
+
+	@PutMapping("atualizar/horario/pezinho/{id}")
+	public ResponseEntity<?> atualizarHorariosPezinho(@PathVariable int id, @RequestBody HorarioBarba atualizar) {
+
+		try {
+			Usuario usuario = atualizar.getUsuario();
+
+			HorarioPezinho pezinho = horarioPezinhoService.pegarHorarioPorId(id);
+			pezinho.setUsuario(usuario);
+			
+			horarioPezinhoService.agendarPezinho(pezinho);
+			return ResponseEntity.ok().build();
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e);
+		}
+
+	}
+	
+	@PutMapping("atualizar/horario/sobrancelha/{id}")
+	public ResponseEntity<?> atualizarHorariosSobrancelha(@PathVariable int id, @RequestBody HorarioBarba atualizar) {
+
+		try {
+			Usuario usuario = atualizar.getUsuario();
+
+			HorarioSobrancelha sobrancelha = horarioSobrancelhaService.pegarHorarioPorId(id);
+			sobrancelha.setUsuario(usuario);
+			
+			horarioSobrancelhaService.agendarSobrancelha(sobrancelha);
+			return ResponseEntity.ok().build();
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e);
+		}
+
+	}
+	
+
+}
