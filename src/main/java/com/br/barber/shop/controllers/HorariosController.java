@@ -204,7 +204,7 @@ public class HorariosController {
 	}
 	
 	
-	@GetMapping("horarios/pezinho/agendados")
+	@GetMapping("horarios/pezinho/agendados/{dia}/{mes}")
 	public ResponseEntity<?> horariosPezinhoAgendadosPorDia(@PathVariable int dia, @PathVariable String mes){
 		try {
 			return ResponseEntity.ok().body(horarioPezinhoService.horariosAgendadosPorDia(dia, mes));
