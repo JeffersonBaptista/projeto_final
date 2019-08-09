@@ -11,21 +11,18 @@ import org.springframework.test.web.servlet.MockMvc;
 import com.br.barber.shop.models.HorarioBarba;
 import com.br.barber.shop.repositories.HorarioBarbaRepositoty;
 
-
-
 @RunWith(SpringRunner.class)
 @WebMvcTest(HorarioBarbaService.class)
 public class HorarioBarbaServiceTeste {
-	
+
 	@Autowired
 	private MockMvc mockMvc;
-	
+
 	@MockBean
 	HorarioBarbaRepositoty horarioBarbaRepository;
-	
+
 	HorarioBarba barba;
-	
-		
+
 	@Before
 	public void prepararBarba() {
 
