@@ -60,5 +60,8 @@ public class HorarioSobrancelhaService {
 		return horarioSobrancelhaRepository.findByDiaAndMesAndUsuarioIsNull(dia, mes);
 		
 	}
+	public Iterable<HorarioSobrancelha> horariosAgendadosPorDia(int dia, String mes){
+		return horarioSobrancelhaRepository.findByDiaAndMesAndUsuarioIsNotNull(dia, mes);
+	}
 
 }

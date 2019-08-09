@@ -232,4 +232,17 @@ public class HorariosController {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e);
 		}
 	}
-}
+		@GetMapping("horarios/sobrancelha/agendados")
+		public ResponseEntity<?> horariosSobrancelhaAgendadosPorDia(@RequestParam(required = false) int dia, 
+				@RequestParam(required = false) String mes){
+			
+			try {
+				return ResponseEntity.ok().body(horarioSobrancelhaService.horariosAgendadosPorDia(dia, mes));
+			} 
+			catch(Exception e) {
+				return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e);
+			}
+		}
+		
+	}
+
