@@ -144,7 +144,7 @@ public class HorariosController {
 	@PutMapping("agendar/cabelo/{idHorario}")
 	public ResponseEntity<?> agendarCabelo(@PathVariable int idHorario,
 			@RequestBody HorarioCabelo novoAgendamentoCabelo) {
-		
+
 		try {
 			Usuario usuario = usuarioService.pegarUsuarioPorID(novoAgendamentoCabelo.getUsuario().getId());
 
@@ -157,14 +157,14 @@ public class HorariosController {
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e);
 		}
-		
+
 	}
 
 	@GetMapping("horarios/barba/disponiveis")
 	public ResponseEntity<?> horariosBarbaNuloPorDia(@RequestParam(required = false) int dia,
 			@RequestParam(required = false) String mes) {
 		try {
-			return ResponseEntity.ok().body(horarioBarbaService.horariosBarbaNuloPorDia(dia,mes));
+			return ResponseEntity.ok().body(horarioBarbaService.horariosBarbaNuloPorDia(dia, mes));
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e);
 		}
@@ -175,7 +175,7 @@ public class HorariosController {
 	public ResponseEntity<?> horariosCabeloNuloPorDia(@RequestParam(required = false) int dia,
 			@RequestParam(required = false) String mes) {
 		try {
-			return ResponseEntity.ok().body(horarioCabeloService.horariosCabeloNuloPorDia(dia,mes));
+			return ResponseEntity.ok().body(horarioCabeloService.horariosCabeloNuloPorDia(dia, mes));
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e);
 		}
@@ -186,7 +186,7 @@ public class HorariosController {
 	public ResponseEntity<?> horariosPezinhoNuloPorDia(@RequestParam(required = false) int dia,
 			@RequestParam(required = false) String mes) {
 		try {
-			return ResponseEntity.ok().body(horarioCabeloService.horariosCabeloNuloPorDia(dia,mes));
+			return ResponseEntity.ok().body(horarioCabeloService.horariosCabeloNuloPorDia(dia, mes));
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e);
 		}
@@ -201,6 +201,17 @@ public class HorariosController {
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e);
 		}
-
 	}
+	
+	
+	@GetMapping("horarios/pezinho/agendados")
+	public ResponseEntity<?> horariosPezinhoAgendadosPorDia(@PathVariable int dia, @PathVariable String mes){
+		try {
+			return ResponseEntity.ok().body(horarioPezinhoService.horariosAgendadosPorDia(dia, mes));
+		}
+		 catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e);		
+		}
+	}
+
 }
