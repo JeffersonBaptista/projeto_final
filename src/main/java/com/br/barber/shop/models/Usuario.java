@@ -36,15 +36,19 @@ public class Usuario implements Serializable{
 	private Login login;
 	
 	@OneToMany(mappedBy = "usuario")
+	@JsonIgnoreProperties("usuario")
 	private List<HorarioBarba> barba;
 	 
 	@OneToMany(mappedBy = "usuario")
+	@JsonIgnoreProperties("usuario")
 	private List<HorarioPezinho> pezinho;
 	
 	@OneToMany(mappedBy = "usuario")
+	@JsonIgnoreProperties("usuario")
 	private List<HorarioCabelo> cabelo;
 	
 	@OneToMany(mappedBy = "usuario")
+	@JsonIgnoreProperties("usuario")
 	private List<HorarioSobrancelha> sobrancelha;
 	
 	
