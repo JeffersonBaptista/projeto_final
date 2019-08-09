@@ -214,5 +214,17 @@ public class HorariosController {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e);		
 		}
 	}
+	
+	
+	@GetMapping("horarios/barba/agendados")
+	public ResponseEntity<?> horariosBarbaAgendadosPorDia(@RequestParam(required = false) int dia,
+			@RequestParam(required = false) String mes){
+		try {
+			return ResponseEntity.ok().body(horarioBarbaService.horariosAgendadosPorDia(dia, mes));
+		}
+		catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e);
+		}
+	}
 
 }

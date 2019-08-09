@@ -10,5 +10,5 @@ public interface HorarioBarbaRepositoty extends CrudRepository<HorarioBarba, Int
 
 	public Iterable<HorarioBarba> findByDiaAndMesAndUsuarioIsNull(int dia, String mes);
 	
-	public Iterable<HorarioBarba> findByUsuarioIsNull();
+	public Iterable<HorarioBarba> findByDiaAndMesAndUsuarioIsNotNull(int dia, String mes);
 }
