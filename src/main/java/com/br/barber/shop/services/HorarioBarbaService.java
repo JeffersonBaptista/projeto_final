@@ -16,16 +16,15 @@ public class HorarioBarbaService {
 	public Iterable<HorarioBarba> exibirTodosHorariosBarba() {
 		return horarioBarbaRepositoty.findAll();
 	}
-	
+
 	public HorarioBarba pegarHorarioBarbaPorId(int id) {
 		return horarioBarbaRepositoty.findById(id).get();
 	}
-	
+
 	public void agendarBarba(HorarioBarba barbaAgendada) {
 		horarioBarbaRepositoty.save(barbaAgendada);
 	}
-	 
-	
+
 	public long quantidadeHorarioBarba() {
 		return horarioBarbaRepositoty.count();
 	}
@@ -48,7 +47,7 @@ public class HorarioBarbaService {
 				barba1.setDia(i);
 				barba1.setMes(nomeMes);
 
-				barba1.setHorario((hora) + ":30 as " + (hora + 1)+":00");
+				barba1.setHorario((hora) + ":30 as " + (hora + 1) + ":00");
 				horarioBarbaRepositoty.save(barba1);
 
 				hora++;
@@ -57,12 +56,18 @@ public class HorarioBarbaService {
 		}
 
 	}
-	public Iterable<HorarioBarba> horariosBarbaNuloPorDia( int dia,String mes){
+
+	public Iterable<HorarioBarba> horariosBarbaNuloPorDia(int dia, String mes) {
 		return horarioBarbaRepositoty.findByDiaAndMesAndUsuarioIsNull(dia, mes);
-		
+
 	}
+
 	public Iterable<HorarioBarba> horariosAgendadosPorDia(int dia, String mes) {
 		return horarioBarbaRepositoty.findByDiaAndMesAndUsuarioIsNotNull(dia, mes);
+	}
+
+	public void excluirHorarioId(int id) {
+		horarioBarbaRepositoty.deleteById(id);
 	}
 
 }

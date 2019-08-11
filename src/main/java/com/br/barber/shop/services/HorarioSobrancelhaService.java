@@ -63,5 +63,8 @@ public class HorarioSobrancelhaService {
 	public Iterable<HorarioSobrancelha> horariosAgendadosPorDia(int dia, String mes){
 		return horarioSobrancelhaRepository.findByDiaAndMesAndUsuarioIsNotNull(dia, mes);
 	}
+	public void  excluirHorarioId(int id) {
+		horarioSobrancelhaRepository.deleteById(id);
+	}
 
 }
