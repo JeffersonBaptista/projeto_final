@@ -10,6 +10,13 @@ Para os clientes da a possibilidade de visualizar todos os horários disponívei
 
 #Get#
 
+**_(/api/zup/barber/shop/exibir/logins)_**
+Retorna todos os logins cadastrados.
+
+**_(/api/zup/barber/shop/buscar/usuario/{id})_**
+Passando na url o id do usuario.
+Retorna os dados do usuario e todos os agendamentos do mesmo.
+
 **_(/api/zup/barber/shop/todos/barba)_**
 Retorna todos os horarios para o serviço de fazer barba.
 
@@ -55,6 +62,21 @@ Passando na url o dia= dia requerido e mes= mes requerido
 Retorna todos os horarios agendados para o serviço de fazer sobrancelha.
 
 #Post#
+
+**_(/api/zup/barber/shop/login)_**
+Passando no body em formato de Json o s dados de login e usuario.
+Exemplo:
+{
+	"apelido":"apelido",
+	"senha": "senha",
+	"usuario":{
+		"nome":"nome",
+		"sobrenome":"sobrenome",
+		"telefone":"telefone"
+	}
+}
+
+Desta forma são criados o login e usuario
 
 **_(/api/zup/barber/shop/criar/mes/{diasMes})_**
 Passando na url {diasMes} a quandidade de dias coresppondente ao mes que deseja criar.
