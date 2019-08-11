@@ -12,4 +12,6 @@ public interface HorarioPezinhoRepository extends CrudRepository<HorarioPezinho,
 	public Iterable<HorarioPezinho> findByDiaAndMesAndUsuarioIsNull(int dia, String mes);
 	
 	public Iterable<HorarioPezinho> findByDiaAndMesAndUsuarioIsNotNull(int dia, String mes);
+	
+	public void deleteByMes(String mes);
 }

@@ -58,5 +58,9 @@ public class HorarioCabeloService {
 	public Iterable<HorarioCabelo> horariosAgendadosPorDia(int dia, String mes) {
 		return horarioCabeloRepository.findByDiaAndMesAndUsuarioIsNotNull(dia, mes);
 	}
+	
+	public void excluirHorarioId(int id) {
+		horarioCabeloRepository.deleteById(id);
+	}
 
 }

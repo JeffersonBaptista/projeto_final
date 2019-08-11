@@ -11,4 +11,6 @@ public interface HorarioSobrancelhaRepository extends CrudRepository<HorarioSobr
 	public Iterable<HorarioSobrancelha> findByDiaAndMesAndUsuarioIsNull(int dia, String mes);
 	
 	public Iterable<HorarioSobrancelha> findByDiaAndMesAndUsuarioIsNotNull(int dia, String mes);
+	
+	public void deleteByMes(String mes);
 }

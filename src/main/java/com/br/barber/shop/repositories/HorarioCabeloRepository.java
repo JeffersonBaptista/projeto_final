@@ -12,4 +12,5 @@ public interface HorarioCabeloRepository extends CrudRepository<HorarioCabelo, I
 
 	public Iterable<HorarioCabelo> findByDiaAndMesAndUsuarioIsNotNull(int dia, String mes);
 
+	public void deleteByMes(String mes);
 }

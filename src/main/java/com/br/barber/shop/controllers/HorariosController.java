@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -186,7 +187,8 @@ public class HorariosController {
 	public ResponseEntity<?> horariosPezinhoNuloPorDia(@RequestParam(required = false) int dia,
 			@RequestParam(required = false) String mes) {
 		try {
-			return ResponseEntity.ok().body(horarioCabeloService.horariosCabeloNuloPorDia(dia, mes));
+			return ResponseEntity.ok().body(horarioPezinhoService.horariosPezinhoNuloPorDia(dia, mes));
+
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e);
 		}
@@ -197,7 +199,8 @@ public class HorariosController {
 	public ResponseEntity<?> horariosSobrancelhaNuloPorDia(@RequestParam(required = false) int dia,
 			@RequestParam(required = false) String mes) {
 		try {
-			return ResponseEntity.ok().body(horarioCabeloService.horariosCabeloNuloPorDia(dia, mes));
+
+			return ResponseEntity.ok().body(horarioSobrancelhaService.horariosSobrancelhaNuloPorDia(dia, mes));
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e);
 		}
@@ -207,6 +210,7 @@ public class HorariosController {
 	public ResponseEntity<?> horariosPezinhoAgendadosPorDia(@RequestParam(required = false) int dia,
 			@RequestParam(required = false) String mes) {
 		try {
+
 			return ResponseEntity.ok().body(horarioPezinhoService.horariosAgendadosPorDia(dia, mes));
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e);
@@ -286,7 +290,7 @@ public class HorariosController {
 
 			HorarioPezinho pezinho = horarioPezinhoService.pegarHorarioPorId(id);
 			pezinho.setUsuario(usuario);
-			
+
 			horarioPezinhoService.agendarPezinho(pezinho);
 			return ResponseEntity.ok().build();
 		} catch (Exception e) {
@@ -294,7 +298,7 @@ public class HorariosController {
 		}
 
 	}
-	
+
 	@PutMapping("atualizar/horario/sobrancelha/{id}")
 	public ResponseEntity<?> atualizarHorariosSobrancelha(@PathVariable int id, @RequestBody HorarioBarba atualizar) {
 
@@ -303,7 +307,7 @@ public class HorariosController {
 
 			HorarioSobrancelha sobrancelha = horarioSobrancelhaService.pegarHorarioPorId(id);
 			sobrancelha.setUsuario(usuario);
-			
+
 			horarioSobrancelhaService.agendarSobrancelha(sobrancelha);
 			return ResponseEntity.ok().build();
 		} catch (Exception e) {
@@ -311,6 +315,45 @@ public class HorariosController {
 		}
 
 	}
-	
+
+	@DeleteMapping("excluir/horario/barba/{id}")
+	public ResponseEntity<?> excluirHorarioBarbaId(@PathVariable int id) {
+		try {
+			horarioBarbaService.excluirHorarioId(id);
+			return ResponseEntity.ok().build();
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e);
+		}
+	}
+
+	@DeleteMapping("excluir/horario/cabelo/{id}")
+	public ResponseEntity<?> excluirHorarioCabeloId(@PathVariable int id) {
+		try {
+			horarioCabeloService.excluirHorarioId(id);
+			return ResponseEntity.ok().build();
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e);
+		}
+	}
+
+	@DeleteMapping("excluir/horario/pezinho/{id}")
+	public ResponseEntity<?> excluirHorarioPezinhoId(@PathVariable int id) {
+		try {
+			horarioPezinhoService.excluirHorarioId(id);
+			return ResponseEntity.ok().build();
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e);
+		}
+	}
+
+	@DeleteMapping("excluir/horario/sobrancelha/{id}")
+	public ResponseEntity<?> excluirHorarioSobrancelhaId(@PathVariable int id) {
+		try {
+			horarioSobrancelhaService.excluirHorarioId(id);
+			return ResponseEntity.ok().build();
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e);
+		}
+	}
 
 }

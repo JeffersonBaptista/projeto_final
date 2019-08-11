@@ -38,7 +38,6 @@ public class HorarioPezinhoService {
 			for (int j = 1; j <= 8; j++) {
 
 				HorarioPezinho pezinho = new HorarioPezinho();
-
 				pezinho.setDia(i);
 				pezinho.setMes(nomeMes);
 
@@ -68,4 +67,8 @@ public class HorarioPezinhoService {
 	public Iterable<HorarioPezinho> horariosAgendadosPorDia(int dia, String mes){
 		return horarioPezinhoRepository.findByDiaAndMesAndUsuarioIsNotNull(dia, mes);
 	}
+	public void  excluirHorarioId(int id) {
+		horarioPezinhoRepository.deleteById(id);
+	}
+	
 }
