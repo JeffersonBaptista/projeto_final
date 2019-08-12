@@ -8,7 +8,7 @@ Para os clientes da a possibilidade de visualizar todos os horários disponívei
 
 ## Endpoints
 
-#Get#
+#Get
 
 **_(/api/zup/barber/shop/exibir/logins)_**
 Retorna todos os logins cadastrados.
@@ -61,7 +61,7 @@ Retorna todos os horarios agendados para o serviço de fazer pezinho.
 Passando na url o dia= dia requerido e mes= mes requerido
 Retorna todos os horarios agendados para o serviço de fazer sobrancelha.
 
-#Post#
+#Post
 
 **_(/api/zup/barber/shop/login)_**
 Passando no body em formato de Json o s dados de login e usuario.
@@ -89,7 +89,7 @@ Exemplo:
 
 Desta forma é criado todos os ararios para todos os dias e serviços do mes.
 
-#Put#
+#Put
 
 **_(/api/zup/barber/shop/agendar/barba/{idHorario})_**
 Passando na url {idHorario} o id do horario .
@@ -179,7 +179,7 @@ Exemplo:
 
 Para disponibilizar um horario antes agendado, em caso de desistencia por parte do cliente.
 
-#Delete#
+#Delete
 
 **_(/api/zup/barber/shop/excluir/horario/barba/{id}")_**
 Passando na url {idHorario} o id do horario .
