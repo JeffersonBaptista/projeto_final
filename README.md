@@ -64,7 +64,7 @@ Retorna todos os horarios agendados para o serviço de fazer sobrancelha.
 #Post
 
 **_(/api/zup/barber/shop/login)_**
-Passando no body em formato de Json o s dados de login e usuario.
+Passando no body em formato de Json os dados de login e usuario.
 Exemplo:
 {
 	"apelido":"apelido",
@@ -87,7 +87,7 @@ Exemplo:
  
     }
 
-Desta forma é criado todos os ararios para todos os dias e serviços do mes.
+Desta forma é criado todos os horarios para todos os dias e serviços do mes.
 
 #Put
 
